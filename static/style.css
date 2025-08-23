@@ -1,0 +1,66 @@
+body {
+    background: radial-gradient(circle at 80% 30%, rgba(171,176,255,0.4) 0%, rgba(125,156,255,0.8) 35%, 
+        rgba(82,140,245,0.9) 75%, #d8dfff 100%),
+        radial-gradient(circle at 15% 80%, #e1ffe1 0%, #b0d9ff 40%, #a392d2 100%);
+    color: #24234d;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    background: rgba(255,255,255,0.82);
+    box-shadow: 0 4px 32px rgba(80,90,180,0.11);
+    border-radius: 32px;
+    width: 400px;
+    padding: 36px 28px 36px;
+    margin: 44px auto;
+}
+h1 {
+    font-weight: 600;
+    background: linear-gradient(90deg, #8798ff 0%, #efc2ff 100%);
+    background-clip: text;
+    color: transparent;
+    margin-top: 0;
+}
+input, select, button {
+    margin: 12px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    width: 97%;
+    font-size: 1rem;
+    background: #e3eaff;
+}
+.form-block {
+    margin-bottom: 13px;
+}
+button {
+    background: linear-gradient(90deg, #bbb3ff, #a4ffe1 90%);
+    color: #34357a;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .2s;
+}
+button:hover {
+    background: linear-gradient(90deg, #a3b7ff, #fbefff);
+}
+.result {
+    margin-top: 22px;
+    background: #dceaff;
+    border-radius: 22px;
+    padding: 17px;
+    font-size: 1.22rem;
+    color: #4059c9;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(100,120,240,0.08);
+}
+.mini-chart {
+    margin-top: 35px;
+    padding: 12px;
+    border-radius: 19px;
+    background: linear-gradient(108deg, #f3f4fd 70%, #b9d1ff 100%);
+}
+label {
+    font-weight: 410;
+}

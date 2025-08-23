@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SaleSleuth: Predict & Prosper</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>SaleSleuth: Predict & Prosper</h1>
+        <form method="post" id="predictForm">
+            <div class="form-block">
+                <label>Pick Date:</label>
+                <input type="date" name="datepicker" value="">
+                <span style="font-size:0.9em; color:#bbb;">(Auto-fills below fields)</span>
+            </div>
+            <div class="form-block">
+                <label for="year">Year:</label>
+                <input type="number" id="year" name="year" value="{{input_vals['year']}}" required>
+            </div>
+            <div class="form-block">
+                <label for="month">Month:</label>
+                <input type="number" id="month" name="month" min="1" max="12" value="{{input_vals['month']}}" required>
+            </div>
+            <div class="form-block">
+                <label for="day">Day:</label>
+                <input type="number" id="day" name="day" min="1" max="31" value="{{input_vals['day']}}" required>
+            </div>
+            <div class="form-block">
+                <label for="weekday">Weekday:</label>
+                <select id="weekday" name="weekday">
+                    {% for i in range(7) %}
+                        <option value="{{i}}" 
+                        {% if input_vals['weekday']|int==i %}selected{% endif %}>
+                        {{['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Predict Sales</button>
+        </form>
+        {% if prediction is not none %}
+            <div class="result">
+                <h2>Predicted Sales: £{{ "{:,.2f}".format(prediction) }}</h2>
+
+            </div>
+        {% endif %}
+        <div class="mini-chart">
+            <h3>Last 30 Days Sales</h3>
+            <canvas id="salesChart"></canvas>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    var ctx = document.getElementById('salesChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{chart_labels|tojson}},
+            datasets: [{
+                label: 'Daily Sales',
+                data: {{chart_sales|tojson}},
+                backgroundColor: 'rgba(204, 236, 255, 0.4)',
+                borderColor: 'rgba(176, 159, 255, .8)',
+                borderWidth: 2,
+                pointBackgroundColor: 'rgba(255, 236, 236, 1)'
+            }]
+        },
+        options: { scales: { x: { ticks: { color: '#666' } }, y: { beginAtZero: true } } }
+    });
+    // Auto-submit form when date picked
+    document.querySelector('input[type="date"]').addEventListener('change', function() {
+        document.getElementById('predictForm').submit();
+    });
+    </script>
+</body>
+</html>
