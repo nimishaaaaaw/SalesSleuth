@@ -1,0 +1,27 @@
+# Python
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.ipynb_checkpoints/
+
+# Envs
+.env
+.venv/
+venv/
+env/
+ENV/
+salesleuth-env/
+
+# VS Code + OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Data/models (optional)
+*.pkl
+*.joblib
+*.h5
+*.db
+*.sqlite
