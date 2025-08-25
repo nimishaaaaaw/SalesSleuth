@@ -25,3 +25,12 @@ Thumbs.db
 *.h5
 *.db
 *.sqlite
+
+# Ignore large dataset files
+*.csv
+*.tsv
+*.xlsx
+
+# Large dataset files
+data.csv
+preprocessed_sales_data.csv
